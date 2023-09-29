@@ -1,4 +1,4 @@
-const { addNumbers, subtractNumbers } = require('./main');
+const { addNumbers, subtractNumbers } = require('../main');
 const { expect } = require('chai');
 
 // Describe a test suite for main.js
