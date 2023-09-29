@@ -24,6 +24,7 @@ jobs:
         run: |
           npm install -g nyc  # Install Istanbul (nyc) for code coverage
           npm install  # Install project dependencies
+          npm install --save-dev nyc
           npm install --save-dev chai
           npm install --save-dev blanket
           npm install --save-dev mocha
