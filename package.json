@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require blanket -R mocha-lcov-reporter --reporter-options=\"output=$GITHUB_WORKSPACE/coverage/coverage.lcov\" __tests__/*.js"
+    "test": "mocha --require blanket __tests__/*.js && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "blanket": "^1.2.3",
+    "mocha": "^10.2.0",
+    "mocha-lcov-reporter": "^1.3.0"
+  }
 }
