@@ -20,6 +20,18 @@ jobs:
         with:
           node-version: '18'  # Choose your Node.js version
 
+      - name: Run Codacy Analysis CLI with Docker (optional)
+        run: |
+            export CODACY_CODE=$GITHUB_WORKSPACE
+            docker run \
+              --rm=true \
+              --env CODACY_CODE="$CODACY_CODE" \
+              --volume /var/run/docker.sock:/var/run/docker.sock \
+              --volume "$CODACY_CODE":"$CODACY_CODE" \
+              --volume /tmp:/tmp \
+              codacy/codacy-analysis-cli \
+                analyze --tool eslint --upload --project-token ${{ secrets.CODACY_PROJECT_TOKEN }} --max-allowed-issues 99999 --commit-uuid $GITHUB_SHA
+
       - name: Install dependencies
         run: |
           npm install -g nyc  # Install Istanbul (nyc) for code coverage
@@ -42,16 +54,3 @@ jobs:
         run: |
             bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r $GITHUB_WORKSPACE/lcov.info
         continue-on-error: true
-
-      - name: Run Codacy Analysis CLI with Docker (optional)
-        run: |
-          export CODACY_CODE=$GITHUB_WORKSPACE
-          docker run \
-            --rm=true \
-            --env CODACY_CODE="$CODACY_CODE" \
-            --volume /var/run/docker.sock:/var/run/docker.sock \
-            --volume "$CODACY_CODE":"$CODACY_CODE" \
-            --volume /tmp:/tmp \
-            codacy/codacy-analysis-cli \
-              analyze --tool eslint --upload --project-token ${{ secrets.CODACY_PROJECT_TOKEN }} --max-allowed-issues 99999 --commit-uuid $GITHUB_SHA
-
