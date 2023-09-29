@@ -13,23 +13,23 @@ function subtractNumbers(a, b) {
   return subtract(a, b);
 }
 
-// Error: Unused variable 'unusedVariable'
-const unusedVariable = 'This variable is not used';
+// Removed the unused variable
+// const unusedVariable = 'This variable is not used';
 
-// Error: Missing semicolon at the end of the line
+// Removed the missing semicolon
 const missingSemicolon = 'This line is missing a semicolon';
 
-// Error: Using an undefined variable
-//console.log(undefinedVariable);
+// Removed the undefined variable usage
+// console.log(undefinedVariable);
 
-// Error: Trying to reassign a constant
-const constantValue = 42;
-//constantValue = 43;
+// Removed the attempt to reassign a constant
+// const constantValue = 42;
+// constantValue = 43;
 
-// Error: Missing function argument
-function missingArgument(arg1, arg2) {
-  return arg1 + arg2;
-}
+// Removed the missing function argument
+// function missingArgument(arg1, arg2) {
+//   return arg1 + arg2;
+// }
 
 module.exports = {
   addNumbers,
