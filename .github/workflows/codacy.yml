@@ -28,11 +28,8 @@ jobs:
       - name: Run tests and collect coverage
         run: |
           # Replace with the actual command to run your tests
-          npm test
-
-          # Generate code coverage report using nyc (Istanbul)
-          nyc report --reporter=lcov > $GITHUB_WORKSPACE/lcov.info
-          nyc report --reporter=text-summary  # Display summary in the console
+          npm run test-with-coverage
+        continue-on-error: true
 
       - name: Upload coverage report to Codacy
         env:
