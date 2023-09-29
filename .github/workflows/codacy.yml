@@ -26,6 +26,7 @@ jobs:
           npm install  # Install project dependencies
           npm install --save-dev blanket
           npm install --save-dev mocha
+          npm install --save-dev mocha-lcov-reporter
 
       - name: Run tests and collect coverage
         run: |
