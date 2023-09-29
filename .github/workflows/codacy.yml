@@ -1,0 +1,54 @@
+name: Client Side Tools and Coverage
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # Choose your Node.js version
+
+      - name: Install dependencies
+        run: |
+          npm install -g nyc  # Install Istanbul (nyc) for code coverage
+          npm install  # Install project dependencies
+
+      - name: Run tests and collect coverage
+        run: |
+          # Replace with the actual command to run your tests
+          npm test
+
+          # Generate code coverage report using nyc (Istanbul)
+          nyc report --reporter=lcov > $GITHUB_WORKSPACE/lcov.info
+          nyc report --reporter=text-summary  # Display summary in the console
+
+      - name: Upload coverage report to Codacy
+        env:
+            CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r $GITHUB_WORKSPACE/lcov.info
+
+      - name: Run Codacy Analysis CLI with Docker (optional)
+        run: |
+          export CODACY_CODE=$GITHUB_WORKSPACE
+          docker run \
+            --rm=true \
+            --env CODACY_CODE="$CODACY_CODE" \
+            --volume /var/run/docker.sock:/var/run/docker.sock \
+            --volume "$CODACY_CODE":"$CODACY_CODE" \
+            --volume /tmp:/tmp \
+            codacy/codacy-analysis-cli \
+              analyze --tool eslint --upload --project-token ${{ secrets.CODACY_PROJECT_TOKEN }} --max-allowed-issues 99999 --commit-uuid $GITHUB_SHA
+        if: success()  # Optional, run only if the previous steps were successful
