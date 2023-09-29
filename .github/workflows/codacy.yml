@@ -41,6 +41,7 @@ jobs:
             CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
             bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r $GITHUB_WORKSPACE/lcov.info
+        continue-on-error: true
 
       - name: Run Codacy Analysis CLI with Docker (optional)
         run: |
