@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require blanket __tests__/*.js && nyc --report-dir=$GITHUB_WORKSPACE nyc report --reporter=text-lcov > $GITHUB_WORKSPACE/coverage.lcov"
+    "test": "mocha --require blanket __tests__/*.js && nyc --report-dir=$GITHUB_WORKSPACE nyc report --reporter=text-lcov > $GITHUB_WORKSPACE/lcov.info"
   },
   "keywords": [],
   "author": "",
