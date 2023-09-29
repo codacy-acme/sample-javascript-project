@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require blanket __tests__/*.js && nyc report --reporter=text-lcov > coverage.lcov"
+    "test": "mocha --require blanket __tests__/*.js && nyc --report-dir=coverage nyc report --reporter=text-lcov > coverage/coverage.lcov"
   },
   "keywords": [],
   "author": "",
