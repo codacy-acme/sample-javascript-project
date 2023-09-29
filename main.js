@@ -24,7 +24,7 @@ const missingSemicolon = 'This line is missing a semicolon';
 
 // Error: Trying to reassign a constant
 const constantValue = 42;
-constantValue = 43;
+//constantValue = 43;
 
 // Error: Missing function argument
 function missingArgument(arg1, arg2) {
