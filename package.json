@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-with-coverage": "nyc --reporter=lcov --reporter=text-summary jest"
+    "test": "mocha --require blanket -R mocha-lcov-reporter --reporter-options output=coverage tests/**/*.js"
   },
   "keywords": [],
   "author": "",

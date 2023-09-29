@@ -28,14 +28,14 @@ jobs:
       - name: Run tests and collect coverage
         run: |
           # Replace with the actual command to run your tests
-          npm run test-with-coverage
+          npm test
         continue-on-error: true
 
       - name: Upload coverage report to Codacy
         env:
             CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
-            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r $GITHUB_WORKSPACE/lcov.info
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r $GITHUB_WORKSPACE/coverage/lcov.info
 
       - name: Run Codacy Analysis CLI with Docker (optional)
         run: |
@@ -49,4 +49,4 @@ jobs:
             codacy/codacy-analysis-cli \
               analyze --tool eslint --upload --project-token ${{ secrets.CODACY_PROJECT_TOKEN }} --max-allowed-issues 99999 --commit-uuid $GITHUB_SHA
         if: success()  # Optional, run only if the previous steps were successful
-        
+
