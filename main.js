@@ -20,7 +20,7 @@ const unusedVariable = 'This variable is not used';
 const missingSemicolon = 'This line is missing a semicolon';
 
 // Error: Using an undefined variable
-console.log(undefinedVariable);
+//console.log(undefinedVariable);
 
 // Error: Trying to reassign a constant
 const constantValue = 42;
