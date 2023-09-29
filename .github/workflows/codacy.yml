@@ -54,5 +54,4 @@ jobs:
             --volume /tmp:/tmp \
             codacy/codacy-analysis-cli \
               analyze --tool eslint --upload --project-token ${{ secrets.CODACY_PROJECT_TOKEN }} --max-allowed-issues 99999 --commit-uuid $GITHUB_SHA
-        if: success()  # Optional, run only if the previous steps were successful
 
