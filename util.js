@@ -2,6 +2,9 @@
 
 // Function to add two numbers
 function add(a, b) {
+    console.log("YAY")
+    console.log('YAY')
+    console.log(`YAY`)
     return a + b;
   }
   
