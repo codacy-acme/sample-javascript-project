@@ -21,7 +21,7 @@ jobs:
           node-version: '18'  # Choose your Node.js version
 
       - name: Run Codacy CLI
-        uses: codacy/codacy-cli-v2-action@main
+        uses: codacy/codacy-cli-v2-action@tests
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
