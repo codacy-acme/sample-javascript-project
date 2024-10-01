@@ -20,17 +20,10 @@ jobs:
         with:
           node-version: '18'  # Choose your Node.js version
 
-      - name: Run Codacy Analysis CLI with Docker (optional)
-        run: |
-            export CODACY_CODE=$GITHUB_WORKSPACE
-            docker run \
-              --rm=true \
-              --env CODACY_CODE="$CODACY_CODE" \
-              --volume /var/run/docker.sock:/var/run/docker.sock \
-              --volume "$CODACY_CODE":"$CODACY_CODE" \
-              --volume /tmp:/tmp \
-              codacy/codacy-analysis-cli \
-                analyze --tool eslint --upload --project-token ${{ secrets.CODACY_PROJECT_TOKEN }} --max-allowed-issues 99999 --commit-uuid $GITHUB_SHA
+      - name: Run Codacy CLI
+        uses: codacy/codacy-cli-v2-action@main
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
       - name: Install dependencies
         run: |
