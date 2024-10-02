@@ -24,6 +24,7 @@ jobs:
         uses: codacy/codacy-cli-v2-action@tests
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          tool: eslint
 
       - name: Install dependencies
         run: |
