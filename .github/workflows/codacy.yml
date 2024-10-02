@@ -25,6 +25,7 @@ jobs:
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           tool: eslint
+          upload_report: true
 
       - name: Install dependencies
         run: |
