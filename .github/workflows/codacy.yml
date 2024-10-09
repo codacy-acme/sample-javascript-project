@@ -21,7 +21,7 @@ jobs:
           node-version: '18'  # Choose your Node.js version
 
       - name: Run Codacy CLI
-        uses: codacy/codacy-cli-v2-action@tests
+        uses: codacy/codacy-cli-v2-action@add_api_token_to_upload
         with:
           project_token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           tool: eslint
