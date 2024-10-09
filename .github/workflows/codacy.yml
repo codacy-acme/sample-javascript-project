@@ -23,9 +23,12 @@ jobs:
       - name: Run Codacy CLI
         uses: codacy/codacy-cli-v2-action@add_api_token_to_upload
         with:
-          project_token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          api_token: ${{ secrets.CODACY_API_TOKEN }}
           tool: eslint
           upload_report: true
+          provider: gh
+          owner: codacy-acme
+          repository: sample-javascript-project
 
       - name: Install dependencies
         run: |
