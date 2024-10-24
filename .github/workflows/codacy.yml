@@ -21,7 +21,7 @@ jobs:
           node-version: '18'  # Choose your Node.js version
 
       - name: Run Codacy CLI
-        uses: codacy/codacy-cli-v2-action@test-file-cleanup
+        uses: codacy/codacy-cli-v2-action@8826e22b167ac80e1ee2e1b8ea82bbf42c20dec4
         with:
           api_token: ${{ secrets.CODACY_API_TOKEN }}
           tool: eslint
