@@ -1,15 +1,14 @@
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
+export default {
+  "linterOptions": {
+    "reportUnusedDisableDirectives": "error"
   },
-  "extends": [
-    "eslint:recommended"
-  ],
-  "parserOptions": {
+  "languageOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "globals": {
+      "window": "readonly",
+      "document": "readonly"
+    }
   },
   "rules": {
     "@angular-eslint_contextual-lifecycle": 1,
