@@ -26,7 +26,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN}}
         with:
           api_token: ${{ secrets.CODACY_API_TOKEN }}
-          tool: eslint
+          tool: eslint9
           upload_report: true
           provider: gh
           owner: codacy-acme
