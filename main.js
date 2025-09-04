@@ -5,7 +5,15 @@ const { add, subtract } = require('./util');
 
 // Function to add two numbers
 function addNumbers(a, b) {
+  console.log('Adding numbers:', a, b);
   return add(a, b);
+}
+
+
+// Function to multiply two numbers
+function multiplyNumbers(a, b) {
+  console.log('Multiplying numbers:', a, b);
+  return a * b;
 }
 
 // Function to subtract two numbers
